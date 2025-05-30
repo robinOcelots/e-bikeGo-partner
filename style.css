@@ -10757,6 +10757,65 @@ html {
     }
   }
 
+
+  /* modal */
+
+  .w-webflow-badge {
+    display: none !important;
+  }
+
+  @media (min-width: 992px) {
+    html.w-mod-js:not(.w-mod-ix)
+      [data-w-id="4578ebee-a0d2-48f6-fea2-143a751e10b0"] {
+      -webkit-transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+      -moz-transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+      -ms-transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+      transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+    }
+
+    html.w-mod-js:not(.w-mod-ix)
+      [data-w-id="3a198b88-f789-29e3-3377-a00571c2aef1"] {
+      color: rgb(48, 44, 255);
+    }
+
+    html.w-mod-js:not(.w-mod-ix)
+      [data-w-id="52bdb2fd-9bf6-6054-f9c1-8ac76d9b3569"] {
+      -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+      -moz-transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+      -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0)
+        rotateY(0) rotateZ(0) skew(0, 0);
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0)
+        rotateZ(0) skew(0, 0);
+    }
+  }
+
+  .partner-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .partner-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 32px;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  
   .error-message {
     color: #dc3545;
     font-size: 14px;
