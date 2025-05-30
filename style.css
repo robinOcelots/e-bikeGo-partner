@@ -10825,3 +10825,111 @@ html {
   input.error, select.error {
     border-color: #dc3545;
   }
+
+  .w-webflow-badge {
+    display: none !important;
+}
+
+@media (min-width:992px) {
+    html.w-mod-js:not(.w-mod-ix) [data-w-id="4578ebee-a0d2-48f6-fea2-143a751e10b0"] {
+        -webkit-transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        -moz-transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        -ms-transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        transform: translate3d(0%, 0%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+    }
+
+    html.w-mod-js:not(.w-mod-ix) [data-w-id="3a198b88-f789-29e3-3377-a00571c2aef1"] {
+        color: rgb(48, 44, 255);
+    }
+
+    html.w-mod-js:not(.w-mod-ix) [data-w-id="52bdb2fd-9bf6-6054-f9c1-8ac76d9b3569"] {
+        -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        -moz-transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+    }
+}
+
+.section-separator {
+    position: relative;
+    height: 320px;
+    margin: -1px 0;
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+}
+
+.separator-wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.wave {
+    transform-origin: 50% 50%;
+    will-change: transform;
+}
+
+.wave1 {
+    animation: wave1 20s linear infinite;
+    opacity: 0.8;
+}
+
+.wave2 {
+    animation: wave2 15s linear infinite;
+    opacity: 0.6;
+}
+
+.wave3 {
+    animation: wave3 10s linear infinite;
+    opacity: 1;
+}
+
+@keyframes wave1 {
+    0% {
+        transform: translateX(-100%) scaleY(1);
+    }
+
+    50% {
+        transform: translateX(0%) scaleY(0.9);
+    }
+
+    100% {
+        transform: translateX(100%) scaleY(1);
+    }
+}
+
+@keyframes wave2 {
+    0% {
+        transform: translateX(100%) scaleY(0.9);
+    }
+
+    50% {
+        transform: translateX(0%) scaleY(1.1);
+    }
+
+    100% {
+        transform: translateX(-100%) scaleY(0.9);
+    }
+}
+
+@keyframes wave3 {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+    }
+
+    50% {
+        transform: translateX(0%) scaleY(1.2);
+    }
+
+    100% {
+        transform: translateX(50%) scaleY(1);
+    }
+}
+
+/* Hide section icons as they don't fit with the new wave design */
+.separator-icons {
+    display: none;
+}
