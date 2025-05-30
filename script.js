@@ -25,116 +25,117 @@ spurious results.`)
 }]);
 
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const phoneInput = document.getElementById('phone');
-
-    // Validation functions
-    function validateName(name) {
-        return name.length >= 2 && /^[a-zA-Z\s]*$/.test(name);
-    }
-
-    function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    function validatePhone(phone) {
-        return /^\+?[\d\s-]{10,}$/.test(phone);
-    }
-
-    // Show error message
+    const form = document.getElementById('partnerForm');
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const number = document.getElementById('number');
+    const email = document.getElementById('email');
+    const investment = document.getElementById('investment');
+  
     function showError(input, message) {
-        const errorElement = document.getElementById(input.id + 'Error');
-        input.classList.add('error');
-        errorElement.textContent = message;
-        errorElement.style.display = 'block';
+      let error = input.nextElementSibling;
+      if (!error || !error.classList.contains('error-message')) {
+        error = document.createElement('span');
+        error.className = 'error-message';
+        input.parentNode.insertBefore(error, input.nextSibling);
+      }
+      error.textContent = message;
+      error.style.display = 'block';
+      input.classList.add('error');
     }
-
-    // Clear error message
+  
     function clearError(input) {
-        const errorElement = document.getElementById(input.id + 'Error');
-        input.classList.remove('error');
-        errorElement.style.display = 'none';
+      let error = input.nextElementSibling;
+      if (error && error.classList.contains('error-message')) {
+        error.style.display = 'none';
+        error.textContent = '';
+      }
+      input.classList.remove('error');
     }
-
-    // Form submission handler
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        let isValid = true;
-
-        // Validate name
-        if (!validateName(nameInput.value)) {
-            showError(nameInput, 'Please enter a valid name (at least 2 characters, letters only)');
-            isValid = false;
-        } else {
-            clearError(nameInput);
-        }
-
-        // Validate email
-        if (!validateEmail(emailInput.value)) {
-            showError(emailInput, 'Please enter a valid email address');
-            isValid = false;
-        } else {
-            clearError(emailInput);
-        }
-
-        // Validate phone
-        if (!validatePhone(phoneInput.value)) {
-            showError(phoneInput, 'Please enter a valid phone number (at least 10 digits)');
-            isValid = false;
-        } else {
-            clearError(phoneInput);
-        }
-
-        if (isValid) {
-            try {
-                // Here you would typically send the data to your backend
-                // For demonstration, we'll use EmailJS
-                const templateParams = {
-                    name: nameInput.value,
-                    email: emailInput.value,
-                    phone: phoneInput.value
-                };
-
-                // You'll need to sign up for EmailJS and add your service ID and template ID
-                // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                //     .then(function(response) {
-                //         console.log('SUCCESS!', response.status, response.text);
-                //         alert('Form submitted successfully!');
-                //         form.reset();
-                //     }, function(error) {
-                //         console.log('FAILED...', error);
-                //         alert('Failed to submit form. Please try again.');
-                //     });
-
-                // For now, we'll just show a success message
-                alert('Form submitted successfully!');
-                form.reset();
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Failed to submit form. Please try again.');
-            }
-        }
-    });
-
+  
+    function validateName(name) {
+      return /^[a-zA-Z]{2,}(?: [a-zA-Z]+)*$/.test(name.trim());
+    }
+  
+    function validatePhone(phone) {
+      return /^[0-9]{10,}$/.test(phone.replace(/\D/g, ''));
+    }
+  
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+  
+    function validateForm() {
+      let valid = true;
+  
+      // First Name
+      if (!validateName(firstName.value)) {
+        showError(firstName, 'Enter a valid first name (letters only, min 2 chars)');
+        valid = false;
+      } else {
+        clearError(firstName);
+      }
+  
+      // Last Name
+      if (!validateName(lastName.value)) {
+        showError(lastName, 'Enter a valid last name (letters only, min 2 chars)');
+        valid = false;
+      } else {
+        clearError(lastName);
+      }
+  
+      // Number
+      if (!validatePhone(number.value)) {
+        showError(number, 'Enter a valid phone number (10+ digits)');
+        valid = false;
+      } else {
+        clearError(number);
+      }
+  
+      // Email
+      if (!validateEmail(email.value)) {
+        showError(email, 'Enter a valid email address');
+        valid = false;
+      } else {
+        clearError(email);
+      }
+  
+      // Investment
+      if (!investment.value) {
+        showError(investment, 'Please select an investment range');
+        valid = false;
+      } else {
+        clearError(investment);
+      }
+  
+      return valid;
+    }
+  
     // Real-time validation
-    nameInput.addEventListener('input', function() {
-        if (validateName(this.value)) {
-            clearError(this);
-        }
+    [firstName, lastName, number, email, investment].forEach(input => {
+      input.addEventListener('input', () => validateForm());
     });
-
-    emailInput.addEventListener('input', function() {
-        if (validateEmail(this.value)) {
-            clearError(this);
+  
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateForm()) return;
+  alert("sdfjhaksjdhfkjdhfkj")
+      // Send email using EmailJS v4+
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        number: number.value,
+        email: email.value,
+        investment: investment.options[investment.selectedIndex].text
+      })
+      .then(
+        function(response) {
+          alert('Form submitted successfully!');
+          form.reset();
+        },
+        function(error) {
+          alert('Failed to submit form. Please try again.');
         }
+      );
     });
-
-    phoneInput.addEventListener('input', function() {
-        if (validatePhone(this.value)) {
-            clearError(this);
-        }
-    });
-});
+  });
