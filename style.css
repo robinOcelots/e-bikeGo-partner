@@ -8814,9 +8814,9 @@ blockquote {
     max-width: 500px;
   }
 
-  .hero-image-background-wrap {
+  /* .hero-image-background-wrap {
     display: none;
-  }
+  } */
 
   .hero-image-details-wrap {
     grid-column-gap: 0px;
