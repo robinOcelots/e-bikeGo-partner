@@ -4692,7 +4692,7 @@ blockquote {
 }
 
 .businesses-type-profile-image {
-  border-radius: 100%;
+  /* border-radius: 50%; */
   max-width: 88px;
   max-height: 88px;
 }
@@ -11197,7 +11197,9 @@ blockquote {
 }
 
 .partner-submit:hover {
-  background: #298aff;
+  background: var(--primary-blue-gradient);
+  /* background: #298aff; */
+  color: var(--white);
   color: #fff;
 }
 
