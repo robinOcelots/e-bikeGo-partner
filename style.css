@@ -2185,6 +2185,7 @@ textarea.w-select {
 :root {
   --black: black;
   --primary-blue: #268aff;
+  --primary-blue-gradient: linear-gradient(to right, #027fc0, #79d9e1);
   --secondary-blue: #e2e1fb;
   --background: #f4f4ff;
   --primary-black: #070721;
@@ -3943,8 +3944,8 @@ blockquote {
 }
 
 .button-blue {
-  border: 1px solid var(--primary-blue);
-  background-color: var(--primary-blue);
+  border: none;
+  background: var(--primary-blue-gradient);
   color: var(--white);
   text-transform: capitalize;
   border-radius: 8px;
@@ -3955,11 +3956,13 @@ blockquote {
   line-height: 150%;
   text-decoration: none;
   transition: all 0.3s;
+  background-size: 200%; /* smooth gradient shift on hover if needed */
 }
 
 .button-blue:hover {
-  background-color: var(--white);
-  color: var(--primary-blue);
+  /* background-position: right; */
+  color: var(--white);
+  border: 1px solid var(--primary-blue);
 }
 
 .button-blue.navbar-button {
@@ -4269,8 +4272,15 @@ blockquote {
 }
 
 .primary-text {
-  color: var(--primary-blue);
+  color: var(var(--primary-blue));
   text-decoration: none;
+}
+.gradient-text {
+  background: var(--primary-blue-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .primary-text.text-center-desktop {
@@ -4547,7 +4557,7 @@ blockquote {
 .get-started-button {
   width: 100%;
   padding: 12px;
-  background-color: #1a73e8;
+  background: var(--primary-blue-gradient);
   color: white;
   border: none;
   /* border-radius: 6px; */
@@ -4986,13 +4996,19 @@ blockquote {
 }
 
 .slider-arrow {
-  border: 1px solid var(--primary-blue);
-  background-color: var(--primary-blue);
+  border: 1px solid var(--white);
+  background: var(--primary-blue-gradient);
+  color: var(--white);
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
   display: flex;
+}
+
+.slider-arrow:hover {
+  border: 1px solid var(--black);
+  background: var(--primary-blue);
 }
 
 .slider-left-arrow {
